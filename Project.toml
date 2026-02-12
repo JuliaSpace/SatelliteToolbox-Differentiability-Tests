@@ -3,8 +3,34 @@ uuid = "c928fb33-6d63-4682-8424-f4348068a3cb"
 authors = ["Jordan Murphy <jmurphy6895@gmail.com> and contributors"]
 version = "1.0.0-DEV"
 
+[deps]
+DifferentiationInterface = "a0c0ee7d-e4b9-4e03-894e-1c5f64a51d63"
+DifferentiationInterfaceTest = "a82114a7-5aa3-49a8-9643-716bb13727a3"
+Enzyme = "7da242da-08ed-463a-9acd-ee780be4f1d9"
+FiniteDiff = "6a86dc24-6348-571c-b903-95158fe2bd41"
+ForwardDiff = "f6369f11-7733-5829-9624-2563aa707210"
+GTPSA = "b27dd330-f138-47c5-815b-40db9dd9b6e8"
+Mooncake = "da2b9cff-9c12-43a0-ae48-6db2b0edb7d6"
+PolyesterForwardDiff = "98d1487c-24ca-40b6-b7ab-df2af84e126b"
+Reexport = "189a3867-3050-52da-a836-e630ba90ab69"
+SpaceIndices = "5a540a4e-639f-452a-b107-23ea09ed4d36"
+TaylorDiff = "b36ab563-344f-407b-a36a-4f200bebf99c"
+Zygote = "e88e6eb3-aa80-5325-afca-941959d7151f"
+
 [compat]
-julia = "1.10.10"
+DifferentiationInterface = "0.7"
+DifferentiationInterfaceTest = "0.11"
+Enzyme = "0.13"
+FiniteDiff = "2"
+ForwardDiff = "1"
+GTPSA = "1"
+Mooncake = "0.5"
+PolyesterForwardDiff = "0.1"
+Reexport = "1"
+SpaceIndices = "2"
+TaylorDiff = "0.3"
+Zygote = "0.7"
+julia = "1.10, 1.11, 1.12"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
