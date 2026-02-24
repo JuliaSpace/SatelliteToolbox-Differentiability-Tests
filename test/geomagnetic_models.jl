@@ -49,7 +49,7 @@
         ]
 
         for (i, input) in enumerate(igrf_inputs)
-            fn = (x) -> collect(igrf(x[1], x[2], x[3], x[4]; show_warnings=false, verbosity=Val(false)))
+            fn = (x) -> collect(igrf(x[1], x[2], x[3], x[4]; show_warnings=false, verbose=Val(false)))
             _, ref_jac = value_and_jacobian(fn, AutoFiniteDiff(), input)
 
             push!(scenarios, Scenario{:jacobian,:out}(fn, input;
@@ -76,7 +76,7 @@
         ]
 
         for (i, input) in enumerate(igrf_inputs)
-            fn = (x) -> collect(igrf(x[1], x[2], x[3], x[4], Val(:geodetic); show_warnings=false, verbosity=Val(false)))
+            fn = (x) -> collect(igrf(x[1], x[2], x[3], x[4], Val(:geodetic); show_warnings=false, verbose=Val(false)))
             _, ref_jac = value_and_jacobian(fn, AutoFiniteDiff(), input)
 
             push!(scenarios, Scenario{:jacobian,:out}(fn, input;
