@@ -1,7 +1,7 @@
 name = "SatelliteToolboxDifferentiability"
 uuid = "c928fb33-6d63-4682-8424-f4348068a3cb"
-authors = ["Jordan Murphy <jmurphy6895@gmail.com> and contributors"]
 version = "1.0.0-DEV"
+authors = ["Jordan Murphy <jmurphy6895@gmail.com> and contributors"]
 
 [deps]
 DifferentiationInterface = "a0c0ee7d-e4b9-4e03-894e-1c5f64a51d63"
@@ -32,6 +32,7 @@ Mooncake = "0.4, 0.5"
 PolyesterForwardDiff = "0.1"
 Reexport = "1"
 SatelliteToolboxAtmosphericModels = "1"
+SatelliteToolboxGeomagneticField = "1"
 SpaceIndices = "2"
 TaylorDiff = "0.3"
 Zygote = "0.7"
