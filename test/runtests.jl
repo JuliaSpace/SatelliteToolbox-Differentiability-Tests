@@ -27,4 +27,5 @@ const _BACKENDS_RTA_NO_GTPSA = filter(b -> !isa(b, AutoGTPSA), _BACKENDS_RTA)
     include("space_indices.jl")
     include("atmospheric_models.jl")
     include("geomagnetic_models.jl")
+    include("sgp4.jl")
 end
