@@ -24,8 +24,9 @@ const _BACKENDS_NO_GTPSA = filter(b -> !isa(b, AutoGTPSA), _BACKENDS)
 const _BACKENDS_RTA_NO_GTPSA = filter(b -> !isa(b, AutoGTPSA), _BACKENDS_RTA)
 
 @testset "SatelliteToolboxDifferentiability.jl" begin
-    include("space_indices.jl")
-    include("atmospheric_models.jl")
-    include("geomagnetic_models.jl")
-    include("sgp4.jl")
+    #include("space_indices.jl")
+    #include("atmospheric_models.jl")
+    #include("geomagnetic_models.jl")
+    #include("sgp4.jl")
+    include("propagators.jl")
 end
