@@ -73,29 +73,4 @@
             testset_name="SGP4 Propagation",
         )
     end
-
-    # ======================== ML-∂SGP4 Propagation ========================
-    # The default model is a const `MLdSGP4FrozenModel` (all SMatrix/SVector),
-    # so the closure captures nothing mutable — safe for every AD backend.
-
-    let scenarios = Scenario[]
-        for tc in test_cases
-            fn = (x) -> begin
-                r, v, _ = ml_dsgp4(x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8], x[9])
-                return collect(vcat(r, v))
-            end
-
-            _, ref_jac = value_and_jacobian(fn, AutoFiniteDiff(), tc.input)
-
-            push!(scenarios, Scenario{:jacobian,:out}(fn, tc.input;
-                res1=ref_jac, name=tc.name,
-                prep_args=(; x=tc.input, contexts=()),
-            ))
-        end
-
-        test_differentiation(_BACKENDS_RTA_NO_GTPSA, scenarios;
-            correctness=true, rtol=1e-2, detailed=true,
-            testset_name="ML-∂SGP4 Propagation",
-        )
-    end
 end

@@ -2,7 +2,7 @@ using SatelliteToolboxDifferentiability
 using Test
 
 using DifferentiationInterface, DifferentiationInterfaceTest
-using Enzyme, FiniteDiff, ForwardDiff, GTPSA, ImplicitDifferentiation, Lux, Mooncake, Optimisers, PolyesterForwardDiff, TaylorDiff, Zygote
+using Enzyme, FiniteDiff, ForwardDiff, GTPSA, ImplicitDifferentiation, Mooncake, PolyesterForwardDiff, TaylorDiff, Zygote
 
 const _BACKENDS = [
     AutoEnzyme(),
