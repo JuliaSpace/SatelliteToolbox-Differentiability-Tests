@@ -2,7 +2,7 @@ using SatelliteToolboxDifferentiability
 using Test
 
 using DifferentiationInterface, DifferentiationInterfaceTest
-using Enzyme, FiniteDiff, ForwardDiff, GTPSA, ImplicitDifferentiation, Mooncake, PolyesterForwardDiff, TaylorDiff, Zygote
+using Enzyme, FiniteDiff, ForwardDiff, GTPSA, ImplicitDifferentiation, Lux, Mooncake, Optimisers, PolyesterForwardDiff, TaylorDiff, Zygote
 
 const _BACKENDS = [
     AutoEnzyme(),
@@ -24,9 +24,9 @@ const _BACKENDS_NO_GTPSA = filter(b -> !isa(b, AutoGTPSA), _BACKENDS)
 const _BACKENDS_RTA_NO_GTPSA = filter(b -> !isa(b, AutoGTPSA), _BACKENDS_RTA)
 
 @testset "SatelliteToolboxDifferentiability.jl" begin
-    #include("space_indices.jl")
-    #include("atmospheric_models.jl")
-    #include("geomagnetic_models.jl")
-    #include("sgp4.jl")
+    include("space_indices.jl")
+    include("atmospheric_models.jl")
+    include("geomagnetic_models.jl")
+    include("sgp4.jl")
     include("propagators.jl")
 end
