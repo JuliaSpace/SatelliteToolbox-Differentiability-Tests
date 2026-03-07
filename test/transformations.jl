@@ -12,6 +12,20 @@
 
     jd_utc = date_to_jd(2004, 4, 6, 7, 51, 28.386009)
 
+    # Enzyme.Const annotation: all transformation closures capture EOP/interpolation
+    # objects that don't participate in differentiation, so mark the function as Const.
+    _BACKENDS_CONST_NO_GTPSA = map(
+        b -> b isa AutoEnzyme ? AutoEnzyme(; function_annotation=Enzyme.Const) : b,
+        _BACKENDS_NO_GTPSA,
+    )
+    _BACKENDS_RTA_CONST_NO_GTPSA = map(
+        b -> b isa AutoEnzyme ? AutoEnzyme(;
+            mode=Enzyme.set_runtime_activity(Enzyme.Forward),
+            function_annotation=Enzyme.Const,
+        ) : b,
+        _BACKENDS_NO_GTPSA,
+    )
+
     # ======================== EOP Functions ========================
 
     let scenarios = Scenario[]
@@ -31,7 +45,7 @@
             ))
         end
 
-        test_differentiation(_BACKENDS_NO_GTPSA, scenarios;
+        test_differentiation(_BACKENDS_RTA_CONST_NO_GTPSA, scenarios;
             correctness=true, rtol=1e-4, detailed=true,
             testset_name="EOP Functions",
         )
@@ -56,7 +70,7 @@
             ))
         end
 
-        test_differentiation(_BACKENDS_RTA_NO_GTPSA, scenarios;
+        test_differentiation(_BACKENDS_RTA_CONST_NO_GTPSA, scenarios;
             correctness=true, rtol=1e-4, detailed=true,
             testset_name="ECEF to ECEF",
         )
@@ -81,7 +95,7 @@
             ))
         end
 
-        test_differentiation(_BACKENDS_RTA_NO_GTPSA, scenarios;
+        test_differentiation(_BACKENDS_RTA_CONST_NO_GTPSA, scenarios;
             correctness=true, rtol=2e-1, detailed=true,
             testset_name="ECEF to ECI",
         )
@@ -106,7 +120,7 @@
             ))
         end
 
-        test_differentiation(_BACKENDS_RTA_NO_GTPSA, scenarios;
+        test_differentiation(_BACKENDS_RTA_CONST_NO_GTPSA, scenarios;
             correctness=true, rtol=2e-1, detailed=true,
             testset_name="ECI to ECEF",
         )
@@ -137,7 +151,7 @@
             ))
         end
 
-        test_differentiation(_BACKENDS_RTA_NO_GTPSA, scenarios;
+        test_differentiation(_BACKENDS_RTA_CONST_NO_GTPSA, scenarios;
             correctness=true, rtol=2e-1, detailed=true,
             testset_name="ECI to ECI (Single Epoch)",
         )
@@ -165,7 +179,7 @@
             ))
         end
 
-        test_differentiation(_BACKENDS_RTA_NO_GTPSA, scenarios;
+        test_differentiation(_BACKENDS_RTA_CONST_NO_GTPSA, scenarios;
             correctness=true, atol=1e-4, detailed=true,
             testset_name="ECI to ECI (Two Epochs)",
         )
@@ -222,7 +236,7 @@
             prep_args=(; x=geodetic_state2, contexts=()),
         ))
 
-        test_differentiation(_BACKENDS_NO_GTPSA, scenarios;
+        test_differentiation(_BACKENDS_CONST_NO_GTPSA, scenarios;
             correctness=true, rtol=2e-1, detailed=true,
             testset_name="Geodetic / Geocentric",
         )
@@ -238,7 +252,7 @@
             prep_args=(; x=jd_utc, contexts=()),
         ))
 
-        test_differentiation(_BACKENDS_NO_GTPSA, scenarios;
+        test_differentiation(_BACKENDS_CONST_NO_GTPSA, scenarios;
             correctness=true, detailed=true,
             testset_name="Leap Seconds",
         )
@@ -279,7 +293,7 @@
             ))
         end
 
-        test_differentiation(_BACKENDS_RTA_NO_GTPSA, scenarios;
+        test_differentiation(_BACKENDS_RTA_CONST_NO_GTPSA, scenarios;
             correctness=true, atol=1e-4, detailed=true,
             testset_name="Time UTC ↔ UT1",
         )
@@ -297,7 +311,7 @@
             ))
         end
 
-        test_differentiation(_BACKENDS_NO_GTPSA, scenarios;
+        test_differentiation(_BACKENDS_CONST_NO_GTPSA, scenarios;
             correctness=true, rtol=1e-4, detailed=true,
             testset_name="Time UTC ↔ TT",
         )
