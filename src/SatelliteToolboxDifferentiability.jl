@@ -4,6 +4,7 @@ using Reexport
 
 @reexport using SatelliteToolboxAtmosphericModels
 @reexport using SatelliteToolboxGeomagneticField
+@reexport using SatelliteToolboxGravityModels
 @reexport using SatelliteToolboxPropagators
 @reexport using SatelliteToolboxSgp4
 @reexport using SatelliteToolboxTransformations

@@ -30,4 +30,5 @@ const _BACKENDS_RTA_NO_GTPSA = filter(b -> !isa(b, AutoGTPSA), _BACKENDS_RTA)
     include("sgp4.jl")
     include("propagators.jl")
     include("transformations.jl")
+    include("gravity_models.jl")
 end

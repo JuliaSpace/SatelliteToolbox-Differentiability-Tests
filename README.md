@@ -4,8 +4,10 @@ This package is intended to hold all the differentiability tests for the Satelli
 
 - SatelliteToolboxAtmosphericModels.jl
 - SatelliteToolboxGeomagneticField.jl
+- SatelliteToolboxGravityModels.jl
 - SatelliteToolboxPropagators.jl
 - SatelliteToolboxSgp4.jl
+- SatelliteToolboxTransformations.jl
 - SpaceIndices.jl
 
 
